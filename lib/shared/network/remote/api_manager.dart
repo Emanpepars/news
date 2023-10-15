@@ -9,12 +9,8 @@ class ApiManager{
 
   static Future<SourcesResponse> getSources(String category) async {
 
-    //هنا بختار اذا كانت http or https ع حسب المطلوب مني
-    //authority عايز ال base url or domain
+
     Uri url = Uri.https(base,"/v2/top-headlines/sources",{"apiKey": apiKey,"category": category,},);
-    // هنا هو عايز url بس مش هيفهمه زي بوست مان ف هعرفه فوق الاول
-   // http.get(url);
-    // هبقي عايزه الرد
     http.Response response = await http.get(url);
     var jsonResponse = jsonDecode(response.body) ;
     SourcesResponse sourcesResponse = SourcesResponse.fromJson(jsonResponse);
